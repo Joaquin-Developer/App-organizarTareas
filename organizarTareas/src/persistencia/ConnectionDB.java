@@ -1,5 +1,6 @@
 package persistencia;
 import java.sql.*;
+import logica.*;
 
 /**
  *
@@ -36,34 +37,26 @@ public class ConnectionDB {
         return con;
     }
     
-    /**
-     *  Add specific methods . . .
-     */
+    /* Specific methods... */
     
-    public void obtenerUsuarios(){
+    public ListaUsuarios obtenerUsuarios() throws Exception {
+        /* return all users in DB */
         
+        ListaUsuarios lista = new ListaUsuarios();
+        Connection con = getConnection();
+        Statement st = con.createStatement();
+        ResultSet result = st.executeQuery("");
+        while (result.next()) {
+            Usuario usuario = new Usuario();
+            // completar segun el nombre del campo en la BD
+            
+            usuario.setNombreUsuario(result.getString("nombre")); 
+            usuario.setPassword(result.getString("password"));
+            lista.add(usuario);
+        }       
+        con.close();
+        return lista;
     }
-    
-    
 
 }
-
-/**
- * public Alumnos getAlumnos() throws Exception {
- Alumnos alumnos = new Alumnos();
- Connection conn = getConnection();
- Statement st = conn.createStatement();
- ResultSet resultado = st.executeQuery("select * from alumno");
- while (resultado.next()) {
- Alumno a = new Alumno();
- a.setCedula(resultado.getString("cedula"));
- a.setAnio(resultado.getInt("anio"));
- a.setCuotaColegio(resultado.getDouble("cuotaColegio"));
- alumnos.insertar(a);
- }
- conn.close();
- return alumnos;
- }
- */
-
 
