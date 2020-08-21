@@ -39,5 +39,31 @@ public class ConnectionDB {
     /**
      *  Add specific methods . . .
      */
+    
+    public void obtenerUsuarios(){
+        
+    }
+    
+    
 
 }
+
+/**
+ * public Alumnos getAlumnos() throws Exception {
+ Alumnos alumnos = new Alumnos();
+ Connection conn = getConnection();
+ Statement st = conn.createStatement();
+ ResultSet resultado = st.executeQuery("select * from alumno");
+ while (resultado.next()) {
+ Alumno a = new Alumno();
+ a.setCedula(resultado.getString("cedula"));
+ a.setAnio(resultado.getInt("anio"));
+ a.setCuotaColegio(resultado.getDouble("cuotaColegio"));
+ alumnos.insertar(a);
+ }
+ conn.close();
+ return alumnos;
+ }
+ */
+
+
