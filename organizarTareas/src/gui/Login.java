@@ -3,6 +3,7 @@ package gui;
 import java.util.Arrays;
 //import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import logica.*;
 
 /**
  *
@@ -12,10 +13,10 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-        propsFrame();
+        framePropert();
     }
     
-    private void propsFrame(){
+    private void framePropert(){
         try{
             this.setLocationRelativeTo(null); //centrar JFrame.-
             
@@ -186,11 +187,29 @@ public class Login extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // Button LOGIN:
         try{
-            if(buscarUsr(txtUsuario.getText()) && validarPsw(txtUsuario.getText())){
-                JOptionPane.showMessageDialog(null,"Iniciando sesión...","Login", JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                JOptionPane.showMessageDialog(null,"Datos incorrectos.","Error al intentar loguearse", JOptionPane.ERROR_MESSAGE);
+            
+            if (txtUsuario.getText().length() == 0 || jPasswordField.getText().length() == 0) {
+                JOptionPane.showMessageDialog(null,"faltan datos");
+            } else {
+                
+                ControladorLogica logica = ControladorLogica.getInstance();
+                boolean loginExitoso = logica.login(txtUsuario.getText(), obtenerStringPsw(jPasswordField.getPassword()));
+                
+                if (loginExitoso) {
+                    JOptionPane.showMessageDialog(null, "login exitoso");
+                } else {
+                    JOptionPane.showMessageDialog(null, "login fallido", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                
+                /**
+                 * Este codigo esta bien, pero hay problemas con la conexion a mysql
+                 * hay que agregar "patch" de libreria 
+                 */
+                
             }
+            
+            
+            
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Se produjo un error al intentar iniciar sesión","Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -216,29 +235,13 @@ public class Login extends javax.swing.JFrame {
             jPasswordField.setEchoChar('*');
     }//GEN-LAST:event_jCheckBoxShowPswStateChanged
 
-    private boolean validarPsw(String usuario){
-        
-        boolean estado = false;
-        char[] pswIngresada = jPasswordField.getPassword();
-        
-        switch(usuario){
-            case "root":
-                char[] pswRoot = (new String("root123")).toCharArray();
-                if(Arrays.equals(pswIngresada, pswRoot))
-                    estado = true;
-                break;
-            case "Joaquin":
-                char[] pswJoaquin = (new String("jp1234")).toCharArray();
-                if(Arrays.equals(pswIngresada, pswJoaquin))
-                    estado = true;
-                break;
-            default:
-                //actionDefault
-                JOptionPane.showMessageDialog(null,"Se produjo un error al realizar la acción","Error",
-                        JOptionPane.ERROR_MESSAGE);
-                estado = false;
+    private String obtenerStringPsw(char[] psw){
+        String password = "";
+        for (char p : psw) {
+            password += p;
         }
-        return estado;
+        return password;
+        
     }
     
     private boolean buscarUsr(String usuario){
