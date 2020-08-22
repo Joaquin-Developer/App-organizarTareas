@@ -1,4 +1,5 @@
 package logica;
+import jdk.internal.net.http.common.Log;
 import persistencia.*;
 //import logica.*;
 
@@ -29,9 +30,28 @@ public class ControladorLogica {
         /**
          * returns true if login is correct, else, returns f.
          */
+        boolean loginCorrecto = false;
+        try {
+            ConnectionDB cdb = ConnectionDB.getInstance();    
+            ListaUsuarios listaUsuarios = cdb.obtenerUsuarios();
+            
+            Usuario usr = listaUsuarios.obtenerPorNombre(nombreUsuario);
+            
+            if (usr.getNombreUsuario() == null) {
+                loginCorrecto = false;
+            } else if (usr.getPassword() != passw) {
+                loginCorrecto = false;
+            } else {
+                loginCorrecto = true;
+            }
+            
+        } catch(Exception ex) {
+            loginCorrecto = false;
+            System.err.println("Error: " + ex.getMessage());
+        } finally {
+            return loginCorrecto;
+        }
         
-        
-        return true;
     }
     
 }

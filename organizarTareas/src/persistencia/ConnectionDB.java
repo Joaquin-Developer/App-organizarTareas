@@ -17,6 +17,9 @@ public class ConnectionDB {
     private String user;
     private String password;
     
+
+            
+    
     private ConnectionDB() {
         con = null;
         driver = "com.mysql.jdbc.Driver";
