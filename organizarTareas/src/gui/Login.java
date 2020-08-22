@@ -18,6 +18,10 @@ public class Login extends javax.swing.JFrame {
     private void propsFrame(){
         try{
             this.setLocationRelativeTo(null); //centrar JFrame.-
+            
+            jCheckBoxShowPsw.setSelected(false);  // por defecto no se debe mostrar la password
+            jPasswordField.setEchoChar('*');
+            
             //btnSalir.setOpaque(false);
             //btnSalir.setBackground(new Color(0,0,0,0));
             
@@ -38,6 +42,8 @@ public class Login extends javax.swing.JFrame {
         btnClose = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jCheckBoxShowPsw = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -76,6 +82,20 @@ public class Login extends javax.swing.JFrame {
 
         jLabel4.setText("BETA - v1.0");
 
+        jButton3.setText("Login");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxShowPsw.setText("Mostrar contraseña");
+        jCheckBoxShowPsw.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxShowPswStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,10 +112,13 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtUsuario)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                                .addComponent(jPasswordField)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jCheckBoxShowPsw)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtUsuario)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                                    .addComponent(jPasswordField)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -123,9 +146,13 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(2, 2, 2)
+                .addComponent(jCheckBoxShowPsw)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -178,6 +205,17 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCloseActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jCheckBoxShowPswStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxShowPswStateChanged
+        if (jCheckBoxShowPsw.isSelected())
+            jPasswordField.setEchoChar((char)0);
+        else
+            jPasswordField.setEchoChar('*');
+    }//GEN-LAST:event_jCheckBoxShowPswStateChanged
+
     private boolean validarPsw(String usuario){
         
         boolean estado = false;
@@ -202,12 +240,7 @@ public class Login extends javax.swing.JFrame {
         }
         return estado;
     }
-    /**
-     * NOTA:  26/05.-
-     * Se deberá sustituir proximamente los Strings de pswUsuario generados, por datos obtenidos
-     * en una consulta a la base de datos
-     * Sustitución: char[] unaPsw = (new String("un string")).toCharArray();
-     */
+    
     private boolean buscarUsr(String usuario){
         boolean existe = false;
         String[] todosUsuarios = {"root","Joaquin"};
@@ -259,6 +292,8 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JCheckBox jCheckBoxShowPsw;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
