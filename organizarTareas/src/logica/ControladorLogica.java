@@ -1,5 +1,4 @@
 package logica;
-import jdk.internal.net.http.common.Log;
 import persistencia.*;
 //import logica.*;
 
@@ -22,8 +21,15 @@ public class ControladorLogica {
         return instance;
     }
     
-    public void obtenerListaUsuarios() {
-        
+    public ListaUsuarios obtenerListaUsuarios() {
+        ListaUsuarios lista = new ListaUsuarios();
+        try {
+            
+        } catch (Exception ex) {
+            System.err.println("Error: " + ex.getMessage());
+        } finally {
+            return lista;
+        }
     }
     
     public boolean login(String nombreUsuario, String passw) {
