@@ -100,7 +100,7 @@ public class Main extends javax.swing.JFrame {
 
         AppMainJFrame.getContentPane().add(jPanelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 30));
 
-        jPanel1.setBackground(new java.awt.Color(20, 153, 35));
+        jPanel1.setBackground(new java.awt.Color(0, 150, 136));
 
         pnlOpenInternal1.setBackground(new java.awt.Color(255, 255, 255));
         pnlOpenInternal1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -354,7 +354,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlOpenInternal1MouseClicked
 
     private void pnlOpenInternal1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenInternal1MouseEntered
-        pnlOpenInternal1.setBackground(Color.decode("#B2EBF2"));
+        pnlOpenInternal1.setBackground(Color.decode("#B2DFDB"));
     }//GEN-LAST:event_pnlOpenInternal1MouseEntered
 
     private void pnlOpenInternal1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenInternal1MouseExited
