@@ -35,7 +35,8 @@ public class Main extends javax.swing.JFrame {
     
     private void editMainFrameProperties() {
         AppMainJFrame.setSize(900, 575);
-        AppMainJFrame.setTitle("Organiza Mis Tareas - App");
+        //AppMainJFrame.setTitle("Organiza Mis Tareas - App"); --no necesario porque la barra de titulo no se va a ver.-
+        lblTitulo.setText("Organiza Mis Tareas - App");
         AppMainJFrame.setLocationRelativeTo(null);  //generate center.-
     }
     
@@ -49,6 +50,7 @@ public class Main extends javax.swing.JFrame {
         AppMainJFrame = new javax.swing.JFrame();
         jPanelTitle = new javax.swing.JPanel();
         lblExitApplication = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         pnlOpenInternal1 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
@@ -89,6 +91,11 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanelTitle.add(lblExitApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, 30, 31));
+
+        lblTitulo.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(254, 254, 254));
+        lblTitulo.setText("jLabel5");
+        jPanelTitle.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         AppMainJFrame.getContentPane().add(jPanelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 30));
 
@@ -277,11 +284,9 @@ public class Main extends javax.swing.JFrame {
                     editMainFrameProperties();
                     
                 } else {
-                    JOptionPane.showMessageDialog(null, "login fallido", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error al iniciar sesion.", "Login Fallido", JOptionPane.ERROR_MESSAGE);
                 }
             }
-            
-            
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Se produjo un error al intentar iniciar sesión","Error", JOptionPane.ERROR_MESSAGE);
@@ -387,6 +392,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelTitle;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JLabel lblExitApplication;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlOpenInternal1;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
