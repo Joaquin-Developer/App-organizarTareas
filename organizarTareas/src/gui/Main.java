@@ -10,6 +10,8 @@ import logica.*;
  * @author joaquin
  */
 public class Main extends javax.swing.JFrame {
+    
+    private int x, y ; /* for possiton of Main JFrame */
 
     public Main() {
         initComponents();
@@ -48,6 +50,7 @@ public class Main extends javax.swing.JFrame {
         jPanelTitle = new javax.swing.JPanel();
         lblExitApplication = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        pnlOpenInternal1 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         txtUsuario = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -66,25 +69,54 @@ public class Main extends javax.swing.JFrame {
         AppMainJFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelTitle.setBackground(new java.awt.Color(1, 1, 1));
+        jPanelTitle.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanelTitleMouseDragged(evt);
+            }
+        });
+        jPanelTitle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanelTitleMousePressed(evt);
+            }
+        });
         jPanelTitle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblExitApplication.setForeground(new java.awt.Color(254, 254, 254));
         lblExitApplication.setText("x");
+        lblExitApplication.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblExitApplicationMouseClicked(evt);
+            }
+        });
         jPanelTitle.add(lblExitApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, 30, 31));
 
         AppMainJFrame.getContentPane().add(jPanelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 30));
 
         jPanel1.setBackground(new java.awt.Color(20, 153, 35));
 
+        javax.swing.GroupLayout pnlOpenInternal1Layout = new javax.swing.GroupLayout(pnlOpenInternal1);
+        pnlOpenInternal1.setLayout(pnlOpenInternal1Layout);
+        pnlOpenInternal1Layout.setHorizontalGroup(
+            pnlOpenInternal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
+        );
+        pnlOpenInternal1Layout.setVerticalGroup(
+            pnlOpenInternal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 34, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addComponent(pnlOpenInternal1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(pnlOpenInternal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(443, Short.MAX_VALUE))
         );
 
         AppMainJFrame.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 560));
@@ -238,7 +270,7 @@ public class Main extends javax.swing.JFrame {
                 boolean loginExitoso = logica.login(txtUsuario.getText(), obtenerStringPsw(jPasswordField.getPassword()));
                 
                 if (loginExitoso) {
-                    JOptionPane.showMessageDialog(null, "login exitoso");
+                    //JOptionPane.showMessageDialog(null, "login exitoso");
                     
                     this.setVisible(false);
                     AppMainJFrame.setVisible(true);
@@ -277,6 +309,22 @@ public class Main extends javax.swing.JFrame {
         else
             jPasswordField.setEchoChar('*');
     }//GEN-LAST:event_jCheckBoxShowPswStateChanged
+    
+    private void jPanelTitleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelTitleMousePressed
+        x = evt.getX();
+        y = evt.getY();        
+    }//GEN-LAST:event_jPanelTitleMousePressed
+
+    private void jPanelTitleMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelTitleMouseDragged
+        int nX = evt.getXOnScreen();
+        int nY = evt.getYOnScreen();
+        AppMainJFrame.setLocation(nX - x, nY - y);
+        
+    }//GEN-LAST:event_jPanelTitleMouseDragged
+
+    private void lblExitApplicationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitApplicationMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_lblExitApplicationMouseClicked
 
     private String obtenerStringPsw(char[] psw){
         String password = "";
@@ -339,6 +387,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelTitle;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JLabel lblExitApplication;
+    private javax.swing.JPanel pnlOpenInternal1;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
