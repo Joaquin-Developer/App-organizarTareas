@@ -48,11 +48,10 @@ public class ConnectionDB {
         ListaUsuarios lista = new ListaUsuarios();
         Connection con = getConnection();
         Statement st = con.createStatement();
-        ResultSet result = st.executeQuery("");
+        ResultSet result = st.executeQuery("select * from usuarios");
         while (result.next()) {
             Usuario usuario = new Usuario();
-            // completar segun el nombre del campo en la BD
-            
+            // nombres segun los campos de la Bd:
             usuario.setNombreUsuario(result.getString("nombre")); 
             usuario.setPassword(result.getString("password"));
             lista.add(usuario);

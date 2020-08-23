@@ -45,7 +45,7 @@ public class ControladorLogica {
             
             if (usr.getNombreUsuario() == null) {
                 loginCorrecto = false;
-            } else if (usr.getPassword() != passw) {
+            } else if (! usr.getPassword().equals(passw)) {
                 loginCorrecto = false;
             } else {
                 loginCorrecto = true;
