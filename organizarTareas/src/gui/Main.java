@@ -32,8 +32,9 @@ public class Main extends javax.swing.JFrame {
     }
     
     private void editMainFrameProperties() {
-        AppMainJFrame.setSize(750, 550);
+        AppMainJFrame.setSize(900, 575);
         AppMainJFrame.setTitle("Organiza Mis Tareas - App");
+        AppMainJFrame.setLocationRelativeTo(null);  //generate center.-
     }
     
     
@@ -44,6 +45,10 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         AppMainJFrame = new javax.swing.JFrame();
+        jPanelTitle = new javax.swing.JPanel();
+        lblExitApplication = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         txtUsuario = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jPasswordField = new javax.swing.JPasswordField();
@@ -55,18 +60,35 @@ public class Main extends javax.swing.JFrame {
         btnCrearCuenta = new javax.swing.JButton();
         jCheckBoxShowPsw = new javax.swing.JCheckBox();
 
+        AppMainJFrame.setLocationByPlatform(true);
+        AppMainJFrame.setUndecorated(true);
         AppMainJFrame.setSize(new java.awt.Dimension(713, 444));
+        AppMainJFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout AppMainJFrameLayout = new javax.swing.GroupLayout(AppMainJFrame.getContentPane());
-        AppMainJFrame.getContentPane().setLayout(AppMainJFrameLayout);
-        AppMainJFrameLayout.setHorizontalGroup(
-            AppMainJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 713, Short.MAX_VALUE)
+        jPanelTitle.setBackground(new java.awt.Color(1, 1, 1));
+        jPanelTitle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblExitApplication.setForeground(new java.awt.Color(254, 254, 254));
+        lblExitApplication.setText("x");
+        jPanelTitle.add(lblExitApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, 30, 31));
+
+        AppMainJFrame.getContentPane().add(jPanelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 30));
+
+        jPanel1.setBackground(new java.awt.Color(20, 153, 35));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
         );
-        AppMainJFrameLayout.setVerticalGroup(
-            AppMainJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
+
+        AppMainJFrame.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 560));
+        AppMainJFrame.getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 680, 560));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -308,11 +330,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnCrearCuenta;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBoxShowPsw;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelTitle;
     private javax.swing.JPasswordField jPasswordField;
+    private javax.swing.JLabel lblExitApplication;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
