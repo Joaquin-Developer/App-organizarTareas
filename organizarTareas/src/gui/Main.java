@@ -1,5 +1,6 @@
 package gui;
 //import java.awt.Color;
+import java.awt.Color;
 import java.util.Arrays;
 //import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -100,6 +101,19 @@ public class Main extends javax.swing.JFrame {
         AppMainJFrame.getContentPane().add(jPanelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 30));
 
         jPanel1.setBackground(new java.awt.Color(20, 153, 35));
+
+        pnlOpenInternal1.setBackground(new java.awt.Color(255, 255, 255));
+        pnlOpenInternal1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlOpenInternal1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlOpenInternal1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlOpenInternal1MouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlOpenInternal1Layout = new javax.swing.GroupLayout(pnlOpenInternal1);
         pnlOpenInternal1.setLayout(pnlOpenInternal1Layout);
@@ -330,6 +344,22 @@ public class Main extends javax.swing.JFrame {
     private void lblExitApplicationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitApplicationMouseClicked
         System.exit(0);
     }//GEN-LAST:event_lblExitApplicationMouseClicked
+
+    private void pnlOpenInternal1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenInternal1MouseClicked
+        
+        System.out.println("Hice click en el panel");
+        // se debe mostrar el internalFrame en el jDesktopPane.-
+        
+        
+    }//GEN-LAST:event_pnlOpenInternal1MouseClicked
+
+    private void pnlOpenInternal1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenInternal1MouseEntered
+        pnlOpenInternal1.setBackground(Color.decode("#B2EBF2"));
+    }//GEN-LAST:event_pnlOpenInternal1MouseEntered
+
+    private void pnlOpenInternal1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenInternal1MouseExited
+        pnlOpenInternal1.setBackground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_pnlOpenInternal1MouseExited
 
     private String obtenerStringPsw(char[] psw){
         String password = "";
