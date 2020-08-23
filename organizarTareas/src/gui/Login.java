@@ -240,22 +240,9 @@ public class Login extends javax.swing.JFrame {
         for (char p : psw) {
             password += p;
         }
-        return password;
-        
+        return password;        
     }
-    
-    private boolean buscarUsr(String usuario){
-        boolean existe = false;
-        String[] todosUsuarios = {"root","Joaquin"};
-        for(String actual : todosUsuarios){
-            if(usuario.equals(actual)){
-                existe = true;
-                break; // sale del iterador For.-
-            }
-        }
-        return existe;
-    }
-    
+
     /**
      * @param argumentos...
      */
