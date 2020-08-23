@@ -9,14 +9,14 @@ import logica.*;
  *
  * @author joaquin
  */
-public class Login extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame {
 
-    public Login() {
+    public Main() {
         initComponents();
-        framePropert();
+        loginFramePropert();
     }
     
-    private void framePropert(){
+    private void loginFramePropert(){
         try{
             this.setLocationRelativeTo(null); //centrar JFrame.-
             
@@ -30,11 +30,20 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,e.getMessage(),"Se produjo un error",JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    private void editMainFrameProperties() {
+        AppMainJFrame.setSize(750, 550);
+        AppMainJFrame.setTitle("Organiza Mis Tareas - App");
+    }
+    
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        AppMainJFrame = new javax.swing.JFrame();
         txtUsuario = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jPasswordField = new javax.swing.JPasswordField();
@@ -45,6 +54,19 @@ public class Login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnCrearCuenta = new javax.swing.JButton();
         jCheckBoxShowPsw = new javax.swing.JCheckBox();
+
+        AppMainJFrame.setSize(new java.awt.Dimension(713, 444));
+
+        javax.swing.GroupLayout AppMainJFrameLayout = new javax.swing.GroupLayout(AppMainJFrame.getContentPane());
+        AppMainJFrame.getContentPane().setLayout(AppMainJFrameLayout);
+        AppMainJFrameLayout.setHorizontalGroup(
+            AppMainJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 713, Short.MAX_VALUE)
+        );
+        AppMainJFrameLayout.setVerticalGroup(
+            AppMainJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 444, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -195,15 +217,14 @@ public class Login extends javax.swing.JFrame {
                 
                 if (loginExitoso) {
                     JOptionPane.showMessageDialog(null, "login exitoso");
+                    
+                    this.setVisible(false);
+                    AppMainJFrame.setVisible(true);
+                    editMainFrameProperties();
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "login fallido", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-                
-                /**
-                 * Este codigo esta bien, pero hay problemas con la conexion a mysql
-                 * hay que agregar "patch" de libreria 
-                 */
-                
             }
             
             
@@ -260,26 +281,29 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Main().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame AppMainJFrame;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnCrearCuenta;
     private javax.swing.JButton jButton2;
