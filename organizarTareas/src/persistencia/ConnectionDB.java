@@ -16,9 +16,7 @@ public class ConnectionDB {
     private String url;
     private String user;
     private String password;
-    
 
-            
     
     private ConnectionDB() {
         con = null;
@@ -60,5 +58,21 @@ public class ConnectionDB {
         return lista;
     }
 
+    public Usuario obtenerUnUsuario(String n, String p) throws Exception {
+        Usuario usuario = new Usuario();
+        Connection con = getConnection();
+        Statement st = con.createStatement();
+        ResultSet result = st.executeQuery("select * from usuarios where nombre=" + n + " and password=" + p);
+        /**
+         * No seguro: se debe arreglar para impedir inyecciones SQL
+         */
+        while (result.next()) {
+            usuario.setNombreUsuario(result.getString("nombre"));
+            usuario.setPassword(result.getString("password"));
+        }
+        con.close();
+        return usuario;
+    }
+    
 }
 

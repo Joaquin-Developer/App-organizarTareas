@@ -10,6 +10,7 @@ import persistencia.*;
 public class ControladorLogica {
     
     private static ControladorLogica instance;
+    private ListaUsuarios listaUsuarios;
     
     private ControladorLogica() {
         // add arrayLists...
@@ -22,14 +23,18 @@ public class ControladorLogica {
     }
     
     public ListaUsuarios obtenerListaUsuarios() {
+        
+        return listaUsuarios;
+        
+        /**
         ListaUsuarios lista = new ListaUsuarios();
         try {
-            
         } catch (Exception ex) {
             System.err.println("Error: " + ex.getMessage());
         } finally {
             return lista;
         }
+         **/
     }
     
     public boolean login(String nombreUsuario, String passw) {
@@ -39,7 +44,7 @@ public class ControladorLogica {
         boolean loginCorrecto = false;
         try {
             ConnectionDB cdb = ConnectionDB.getInstance();    
-            ListaUsuarios listaUsuarios = cdb.obtenerUsuarios();
+            listaUsuarios = cdb.obtenerUsuarios();
             
             Usuario usr = listaUsuarios.obtenerPorNombre(nombreUsuario);
             
