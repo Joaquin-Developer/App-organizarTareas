@@ -53,6 +53,7 @@ public class ControladorLogica {
             
         } catch(Exception ex) {
             loginCorrecto = false;
+            System.err.println(ex);
             System.err.println("Error: " + ex.getMessage());
         } finally {
             return loginCorrecto;
