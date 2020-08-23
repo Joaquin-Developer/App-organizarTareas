@@ -8,14 +8,14 @@ import logica.*;
  */
 public class EjemploInternal1 extends javax.swing.JInternalFrame {
 
-    public static EjemploInternal1 instance;
+    private static EjemploInternal1 instance;
     
     
     public EjemploInternal1() {
         initComponents();
     }
     
-    public EjemploInternal1 getInstance() {
+    public static EjemploInternal1 getInstance() {
         if (instance == null)
             instance = new EjemploInternal1();
         return instance;

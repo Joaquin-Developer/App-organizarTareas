@@ -13,6 +13,7 @@ import logica.*;
 public class Main extends javax.swing.JFrame {
     
     private int x, y ; /* for possiton of Main JFrame */
+    private static Usuario usuarioSesion;
 
     public Main() {
         initComponents();
@@ -39,9 +40,12 @@ public class Main extends javax.swing.JFrame {
         //AppMainJFrame.setTitle("Organiza Mis Tareas - App"); --no necesario porque la barra de titulo no se va a ver.-
         lblTitulo.setText("Organiza Mis Tareas - App");
         AppMainJFrame.setLocationRelativeTo(null);  //generate center.-
+        lblNombreUsuario.setText(usuarioSesion.getNombreUsuario());
     }
     
-    
+    public void setUsuarioSesion(Usuario u){
+        usuarioSesion = u;
+    }
     
 
     @SuppressWarnings("unchecked")
@@ -54,7 +58,9 @@ public class Main extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         pnlOpenInternal1 = new javax.swing.JPanel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jPanel2 = new javax.swing.JPanel();
+        lblNombreUsuario = new javax.swing.JLabel();
+        dpFrameContainer = new javax.swing.JDesktopPane();
         txtUsuario = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jPasswordField = new javax.swing.JPasswordField();
@@ -126,22 +132,56 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 34, Short.MAX_VALUE)
         );
 
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel2MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 34, Short.MAX_VALUE)
+        );
+
+        lblNombreUsuario.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        lblNombreUsuario.setText("*nombreUsuario*");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlOpenInternal1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(lblNombreUsuario)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(150, 150, 150)
                 .addComponent(pnlOpenInternal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
+                .addComponent(lblNombreUsuario)
+                .addGap(38, 38, 38))
         );
 
         AppMainJFrame.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 560));
-        AppMainJFrame.getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 680, 560));
+        AppMainJFrame.getContentPane().add(dpFrameContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 680, 560));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -292,7 +332,7 @@ public class Main extends javax.swing.JFrame {
                 
                 if (loginExitoso) {
                     //JOptionPane.showMessageDialog(null, "login exitoso");
-                    
+                    setUsuarioSesion(logica.obtenerListaUsuarios().obtenerPorNombre(txtUsuario.getText()));
                     this.setVisible(false);
                     AppMainJFrame.setVisible(true);
                     editMainFrameProperties();
@@ -347,8 +387,12 @@ public class Main extends javax.swing.JFrame {
 
     private void pnlOpenInternal1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenInternal1MouseClicked
         
-        System.out.println("Hice click en el panel");
+        //System.out.println("Hice click en el panel");
         // se debe mostrar el internalFrame en el jDesktopPane.-
+        EjemploInternal1 ei1 = EjemploInternal1.getInstance();
+        dpFrameContainer.removeAll();
+        dpFrameContainer.add(ei1);
+        ei1.setVisible(true);
         
         
     }//GEN-LAST:event_pnlOpenInternal1MouseClicked
@@ -360,6 +404,21 @@ public class Main extends javax.swing.JFrame {
     private void pnlOpenInternal1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenInternal1MouseExited
         pnlOpenInternal1.setBackground(Color.decode("#FFFFFF"));
     }//GEN-LAST:event_pnlOpenInternal1MouseExited
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        /**
+         * Show new jInternalFrame in pnlOpenInternal1
+         */
+        JOptionPane.showMessageDialog(null, "jPanel2");
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+        pnlOpenInternal1.setBackground(Color.decode("#B2DFDB"));
+    }//GEN-LAST:event_jPanel2MouseEntered
+
+    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+        pnlOpenInternal1.setBackground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_jPanel2MouseExited
 
     private String obtenerStringPsw(char[] psw){
         String password = "";
@@ -411,17 +470,19 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JFrame AppMainJFrame;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnCrearCuenta;
+    private javax.swing.JDesktopPane dpFrameContainer;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBoxShowPsw;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelTitle;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JLabel lblExitApplication;
+    private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlOpenInternal1;
     private javax.swing.JTextField txtUsuario;
