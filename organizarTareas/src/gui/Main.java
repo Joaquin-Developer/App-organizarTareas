@@ -26,6 +26,8 @@ public class Main extends javax.swing.JFrame {
             
             jCheckBoxShowPsw.setSelected(false);  // por defecto no se debe mostrar la password
             jPasswordField.setEchoChar('*');
+            this.jPasswordField.setText("");
+            this.txtUsuario.setText("");
             
             //btnSalir.setOpaque(false);
             //btnSalir.setBackground(new Color(0,0,0,0));
@@ -60,6 +62,7 @@ public class Main extends javax.swing.JFrame {
         pnlOpenInternal1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblNombreUsuario = new javax.swing.JLabel();
+        cBoxSettingsUser = new javax.swing.JComboBox<>();
         dpFrameContainer = new javax.swing.JDesktopPane();
         txtUsuario = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -159,16 +162,29 @@ public class Main extends javax.swing.JFrame {
         lblNombreUsuario.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         lblNombreUsuario.setText("*nombreUsuario*");
 
+        cBoxSettingsUser.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        cBoxSettingsUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ajustes", "Cerrar Sesión", " " }));
+        cBoxSettingsUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cBoxSettingsUserActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlOpenInternal1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lblNombreUsuario)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(cBoxSettingsUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblNombreUsuario)
+                        .addGap(35, 35, 35))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,9 +193,11 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(pnlOpenInternal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
                 .addComponent(lblNombreUsuario)
-                .addGap(45, 45, 45))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cBoxSettingsUser, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4))
         );
 
         AppMainJFrame.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 560));
@@ -421,6 +439,19 @@ public class Main extends javax.swing.JFrame {
         pnlOpenInternal1.setBackground(Color.decode("#FFFFFF"));
     }//GEN-LAST:event_jPanel2MouseExited
 
+    private void cBoxSettingsUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxSettingsUserActionPerformed
+        if (cBoxSettingsUser.getSelectedIndex() == 0) {
+            // ajustes
+            JOptionPane.showMessageDialog(null, "Por ahora esta funcionalidad está fuera de uso.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+            
+        } else if (cBoxSettingsUser.getSelectedIndex() == 1) {
+            // cerrar sesion
+            AppMainJFrame.setVisible(false);
+            this.setVisible(true);
+            loginFramePropert();
+        }
+    }//GEN-LAST:event_cBoxSettingsUserActionPerformed
+
     private String obtenerStringPsw(char[] psw){
         String password = "";
         for (char p : psw) {
@@ -471,6 +502,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JFrame AppMainJFrame;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnCrearCuenta;
+    private javax.swing.JComboBox<String> cBoxSettingsUser;
     private javax.swing.JDesktopPane dpFrameContainer;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBoxShowPsw;
