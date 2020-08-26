@@ -10,6 +10,7 @@ public class Tarea {
     
     private Time fechaInicio;
     private Time fechaFin;
+    //private
     private String nombre;
     private String descripcion;
     private int id;
