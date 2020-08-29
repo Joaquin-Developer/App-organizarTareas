@@ -8,24 +8,71 @@ import java.sql.Time;
  */
 public class Tarea {
     
-    private Time fechaInicio;
-    private Time fechaFin;
-    //private
+    private int id;
     private String nombre;
     private String descripcion;
-    private int id;
+    private Fecha fechaInicio;
+    //private Time fechaInicio;
+    //private Time fechaFin;
+    private Fecha fechaFin;
+    
     
     public Tarea(){
     }
 
-    public Tarea(Time fechaInicio, Time fechaFin, String nombre, String descripcion, int id) {
+    public Tarea(Fecha fechaInicio, Fecha fechaFin, String nombre, String descripcion, int id) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.id = id;
     }
+
+    public Fecha getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Fecha fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Fecha getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Fecha fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
-    
+    public String toString () {
+        return "Tarea: " + nombre 
+                + " Fecha inicio: " + fechaInicio.toString()
+                + " Fecha fin: " + fechaFin.toString() 
+                + " Breve descripcion: " + descripcion;
+    }
     
 }
