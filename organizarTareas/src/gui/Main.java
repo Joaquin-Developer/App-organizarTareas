@@ -340,7 +340,10 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordFieldFocusLost
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // Button LOGIN:
+        /**
+         * Boton LOGIN (JFrame1)
+         */
+        
         try{
             if (txtUsuario.getText().length() == 0 || jPasswordField.getText().length() == 0) {
                 JOptionPane.showMessageDialog(null,"faltan datos");
@@ -355,6 +358,7 @@ public class Main extends javax.swing.JFrame {
                     this.setVisible(false);
                     AppMainJFrame.setVisible(true);
                     editMainFrameProperties();
+                    JOptionPane.showMessageDialog(null, usuarioSesion.toString());
                     
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al iniciar sesion.", "Login Fallido", JOptionPane.ERROR_MESSAGE);

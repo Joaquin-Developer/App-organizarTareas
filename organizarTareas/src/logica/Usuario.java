@@ -54,11 +54,11 @@ public class Usuario {
         this.apellidoPersona = apellidoPersona;
     }
     
-    private boolean getTareasSuperpuestas () {
+    public boolean getTareasSuperpuestas () {
         return tareasSuperpuestas;
     }
     
-    private void setTareasSuperpuestas (boolean tareasSuperpuestas) {
+    public void setTareasSuperpuestas (boolean tareasSuperpuestas) {
         this.tareasSuperpuestas = tareasSuperpuestas;
     }
 
@@ -69,11 +69,11 @@ public class Usuario {
             tareas = "si";
         else
             tareas = "no";
-        return "Usuario{" + "nombreUsuario=" + nombreUsuario 
-                + ", password=" + password 
-                + ", nombrePersona=" + nombrePersona 
-                + ", apellidoPersona=" + apellidoPersona 
-                + "este usuario " + tareas + " permite tareas superpuestas }";
+        return "Usuario{" + "nombreUsuario= " + nombreUsuario 
+                + ", password= " + password 
+                + ", nombrePersona= " + nombrePersona 
+                + ", apellidoPersona= " + apellidoPersona 
+                + ", este usuario " + tareas + " permite tareas superpuestas }";
     }
 
 }

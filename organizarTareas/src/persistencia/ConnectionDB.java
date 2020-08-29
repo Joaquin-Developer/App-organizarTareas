@@ -52,6 +52,13 @@ public class ConnectionDB {
             // nombres segun los campos de la Bd:
             usuario.setNombreUsuario(result.getString("nombre")); 
             usuario.setPassword(result.getString("password"));
+            if (result.getInt("tareasSuperpuestas") == 0)
+                usuario.setTareasSuperpuestas(false);
+            else 
+                usuario.setTareasSuperpuestas(true);
+            usuario.setNombrePersona(result.getString("nombrePersona"));
+            usuario.setApellidoPersona(result.getString("apellidoPersona"));
+            
             lista.add(usuario);
         }       
         con.close();
