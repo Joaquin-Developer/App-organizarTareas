@@ -11,12 +11,15 @@ public class Usuario {
     private String nombrePersona, apellidoPersona; // nombre y apellido reales
     private boolean tareasSuperpuestas;
     
-    public Usuario() {
-    }
+    public Usuario() {  /* constructor para objetos vacios*/ }
 
-    public Usuario(String nombreUsuario, String password) {
+    public Usuario(String nombreUsuario, String password, String nombrePersona, String apellidoPersona, boolean tareasSuperpuestas)
+    {
         this.nombreUsuario = nombreUsuario;
         this.password = password;
+        this.nombrePersona = nombrePersona;
+        this.apellidoPersona = apellidoPersona;
+        this.tareasSuperpuestas = tareasSuperpuestas;
     }
 
     public String getNombreUsuario() {
