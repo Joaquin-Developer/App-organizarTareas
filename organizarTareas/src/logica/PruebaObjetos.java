@@ -8,10 +8,6 @@ import java.util.GregorianCalendar;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author joaquin
- */
 public class PruebaObjetos {
     
     private static LocalDate fecha;
@@ -26,6 +22,8 @@ public class PruebaObjetos {
         // print: 26/8/2020 [ok]
         
         fecha = LocalDate.now();
+        
+        
         JOptionPane.showMessageDialog(null, fecha.toString(), "LocalDate", JOptionPane.PLAIN_MESSAGE);
         
         
