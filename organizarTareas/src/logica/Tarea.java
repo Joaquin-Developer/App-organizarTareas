@@ -68,6 +68,7 @@ public class Tarea {
         this.id = id;
     }
     
+    @Override
     public String toString () {
         return "Tarea: " + nombre 
                 + " Fecha inicio: " + fechaInicio.toString()

@@ -2,13 +2,14 @@ package logica;
 
 /**
  *
- * @author joaquin
+ * @author Joaquín Parrilla
  */
 
 public class Usuario {
     
-    private String nombreUsuario;
-    private String password;
+    private String nombreUsuario, password; // datos relacionados a la cuenta
+    private String nombrePersona, apellidoPersona; // nombre y apellido reales
+    private boolean tareasSuperpuestas;
     
     public Usuario() {
     }
@@ -33,10 +34,44 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public String getNombrePersona () {
+        return nombrePersona;
+    }
+    
+    public void setNombrePersona (String nombrePersona) {
+        this.nombrePersona = nombrePersona;
+    }
+    
+    public String getApellidoPersona () {
+        return apellidoPersona;
+    }
+    
+    public void setApellidoPersona (String apellidoPersona) {
+        this.apellidoPersona = apellidoPersona;
+    }
+    
+    private boolean getTareasSuperpuestas () {
+        return tareasSuperpuestas;
+    }
+    
+    private void setTareasSuperpuestas (boolean tareasSuperpuestas) {
+        this.tareasSuperpuestas = tareasSuperpuestas;
+    }
 
     @Override
     public String toString() {
-        return "Usuario{" + "nombreUsuario=" + nombreUsuario + ", password=" + password + '}';
+        String tareas;
+        if (tareasSuperpuestas)
+            tareas = "si";
+        else
+            tareas = "no";
+        return "Usuario{" + "nombreUsuario=" + nombreUsuario 
+                + ", password=" + password 
+                + ", nombrePersona=" + nombrePersona 
+                + ", apellidoPersona=" + apellidoPersona 
+                + "este usuario " + tareas + " permite tareas superpuestas }";
     }
 
 }
+

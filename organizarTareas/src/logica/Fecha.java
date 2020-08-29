@@ -80,6 +80,7 @@ public class Fecha {
         return pertenece;
     }
     
+    @Override
     public String toString() {
         return dia + "/" + mes + "/" + anio;
     }
