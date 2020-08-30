@@ -1,4 +1,4 @@
-package logica;
+package test;
 
 import java.text.SimpleDateFormat;
 //import java.text.ParseException;
@@ -8,11 +8,12 @@ import java.util.GregorianCalendar;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
-public class PruebaObjetos {
+public class Test {
     
-    private static LocalDate fecha;
+    private LocalDate fecha;
     
-    public static void main(String[] args) {
+    
+    public void prueba1() {
         //SimpleDateFormat objSDF = new SimpleDateFormat("dd-mm-yyyy"); 
         LocalDate ld = LocalDate.now();
 
@@ -26,7 +27,11 @@ public class PruebaObjetos {
         
         JOptionPane.showMessageDialog(null, fecha.toString(), "LocalDate", JOptionPane.PLAIN_MESSAGE);
         
+    }
+    
+    public static void main(String[] args) {
         
+        //prueba1();
         
     }
     
