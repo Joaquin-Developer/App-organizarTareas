@@ -1,7 +1,11 @@
 package gui;
 //import java.awt.Color;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.Arrays;
+import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
 //import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import logica.*;
@@ -49,6 +53,21 @@ public class Main extends javax.swing.JFrame {
         usuarioSesion = u;
     }
     
+    private JDesktopPane inicializarDesktopPane(JDesktopPane jDesktopPane, String imgPath, int scalx, int scaly) { 
+
+        jDesktopPane = new JDesktopPane() { 
+            ImageIcon icon = new ImageIcon(imgPath); 
+            Image image = icon.getImage(); 
+            Image newimage = image.getScaledInstance(scalx, scaly, Image.SCALE_SMOOTH); 
+
+            @Override 
+            protected void paintComponent(Graphics g) { 
+                super.paintComponent(g); 
+                g.drawImage(newimage, 0, 0, this); 
+            } 
+        }; 
+        return jDesktopPane; 
+    } 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -59,11 +78,15 @@ public class Main extends javax.swing.JFrame {
         lblExitApplication = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        pnlOpenInternal1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        pnlAbrirNuevaTarea = new javax.swing.JPanel();
+        lblCrearNuevaTarea = new javax.swing.JLabel();
+        pnlVerTareas = new javax.swing.JPanel();
+        lblVerMisTareas = new javax.swing.JLabel();
         lblNombreUsuario = new javax.swing.JLabel();
         cBoxSettingsUser = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
         dpFrameContainer = new javax.swing.JDesktopPane();
+        jLabel7 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jPasswordField = new javax.swing.JPasswordField();
@@ -111,52 +134,70 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 150, 136));
 
-        pnlOpenInternal1.setBackground(new java.awt.Color(255, 255, 255));
-        pnlOpenInternal1.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlAbrirNuevaTarea.setBackground(new java.awt.Color(255, 255, 255));
+        pnlAbrirNuevaTarea.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlOpenInternal1MouseClicked(evt);
+                pnlAbrirNuevaTareaMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlOpenInternal1MouseEntered(evt);
+                pnlAbrirNuevaTareaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlOpenInternal1MouseExited(evt);
+                pnlAbrirNuevaTareaMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout pnlOpenInternal1Layout = new javax.swing.GroupLayout(pnlOpenInternal1);
-        pnlOpenInternal1.setLayout(pnlOpenInternal1Layout);
-        pnlOpenInternal1Layout.setHorizontalGroup(
-            pnlOpenInternal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+        lblCrearNuevaTarea.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        lblCrearNuevaTarea.setText("Crear nueva Tarea");
+
+        javax.swing.GroupLayout pnlAbrirNuevaTareaLayout = new javax.swing.GroupLayout(pnlAbrirNuevaTarea);
+        pnlAbrirNuevaTarea.setLayout(pnlAbrirNuevaTareaLayout);
+        pnlAbrirNuevaTareaLayout.setHorizontalGroup(
+            pnlAbrirNuevaTareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAbrirNuevaTareaLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(lblCrearNuevaTarea)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pnlOpenInternal1Layout.setVerticalGroup(
-            pnlOpenInternal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
+        pnlAbrirNuevaTareaLayout.setVerticalGroup(
+            pnlAbrirNuevaTareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAbrirNuevaTareaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCrearNuevaTarea)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlVerTareas.setBackground(new java.awt.Color(255, 255, 255));
+        pnlVerTareas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel2MouseClicked(evt);
+                pnlVerTareasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel2MouseEntered(evt);
+                pnlVerTareasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel2MouseExited(evt);
+                pnlVerTareasMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        lblVerMisTareas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        lblVerMisTareas.setText("Ver mis Tareas");
+
+        javax.swing.GroupLayout pnlVerTareasLayout = new javax.swing.GroupLayout(pnlVerTareas);
+        pnlVerTareas.setLayout(pnlVerTareasLayout);
+        pnlVerTareasLayout.setHorizontalGroup(
+            pnlVerTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVerTareasLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(lblVerMisTareas)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
+        pnlVerTareasLayout.setVerticalGroup(
+            pnlVerTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlVerTareasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblVerMisTareas)
+                .addContainerGap())
         );
 
         lblNombreUsuario.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
@@ -170,14 +211,22 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        jLabel5.setText("*logo*");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlOpenInternal1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlAbrirNuevaTarea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlVerTareas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(89, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(cBoxSettingsUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,23 +234,34 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lblNombreUsuario)
                         .addGap(35, 35, 35))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(jLabel5)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(pnlOpenInternal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel5)
+                .addGap(97, 97, 97)
+                .addComponent(pnlAbrirNuevaTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
+                .addComponent(pnlVerTareas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, Short.MAX_VALUE)
                 .addComponent(lblNombreUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cBoxSettingsUser, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4))
+                .addComponent(cBoxSettingsUser, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         AppMainJFrame.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 560));
-        AppMainJFrame.getContentPane().add(dpFrameContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 690, 560));
+
+        dpFrameContainer.setBackground(new java.awt.Color(66, 154, 242));
+        AppMainJFrame.getContentPane().add(dpFrameContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 690, 570));
+
+        jLabel7.setText("jLabel7");
+        AppMainJFrame.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -408,40 +468,37 @@ public class Main extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_lblExitApplicationMouseClicked
 
-    private void pnlOpenInternal1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenInternal1MouseClicked
+    private void pnlAbrirNuevaTareaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAbrirNuevaTareaMouseClicked
         
-        //System.out.println("Hice click en el panel");
         // se debe mostrar el internalFrame en el jDesktopPane.-
-        EjemploInternal1 ei1 = EjemploInternal1.getInstance();
+        IntFrameNuevaTarea frameNuevaTarea = IntFrameNuevaTarea.getInstance();
         dpFrameContainer.removeAll();
-        dpFrameContainer.add(ei1);
-        ei1.setVisible(true);
-        
-        
-    }//GEN-LAST:event_pnlOpenInternal1MouseClicked
+        dpFrameContainer.add(frameNuevaTarea);
+        frameNuevaTarea.setVisible(true);
+    }//GEN-LAST:event_pnlAbrirNuevaTareaMouseClicked
 
-    private void pnlOpenInternal1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenInternal1MouseEntered
-        pnlOpenInternal1.setBackground(Color.decode("#B2DFDB"));
-    }//GEN-LAST:event_pnlOpenInternal1MouseEntered
+    private void pnlAbrirNuevaTareaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAbrirNuevaTareaMouseEntered
+        pnlAbrirNuevaTarea.setBackground(Color.decode("#B2DFDB"));
+    }//GEN-LAST:event_pnlAbrirNuevaTareaMouseEntered
 
-    private void pnlOpenInternal1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenInternal1MouseExited
-        pnlOpenInternal1.setBackground(Color.decode("#FFFFFF"));
-    }//GEN-LAST:event_pnlOpenInternal1MouseExited
+    private void pnlAbrirNuevaTareaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAbrirNuevaTareaMouseExited
+        pnlAbrirNuevaTarea.setBackground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_pnlAbrirNuevaTareaMouseExited
 
-    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+    private void pnlVerTareasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlVerTareasMouseClicked
         /**
          * Show new jInternalFrame in pnlOpenInternal1
          */
         JOptionPane.showMessageDialog(null, "jPanel2");
-    }//GEN-LAST:event_jPanel2MouseClicked
+    }//GEN-LAST:event_pnlVerTareasMouseClicked
 
-    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
-        pnlOpenInternal1.setBackground(Color.decode("#B2DFDB"));
-    }//GEN-LAST:event_jPanel2MouseEntered
+    private void pnlVerTareasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlVerTareasMouseEntered
+        pnlAbrirNuevaTarea.setBackground(Color.decode("#B2DFDB"));
+    }//GEN-LAST:event_pnlVerTareasMouseEntered
 
-    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
-        pnlOpenInternal1.setBackground(Color.decode("#FFFFFF"));
-    }//GEN-LAST:event_jPanel2MouseExited
+    private void pnlVerTareasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlVerTareasMouseExited
+        pnlAbrirNuevaTarea.setBackground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_pnlVerTareasMouseExited
 
     private void cBoxSettingsUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxSettingsUserActionPerformed
         if (cBoxSettingsUser.getSelectedIndex() == 0) {
@@ -455,6 +512,11 @@ public class Main extends javax.swing.JFrame {
             loginFramePropert();
         }
     }//GEN-LAST:event_cBoxSettingsUserActionPerformed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // al hacer click en logo se vacian los elementos del panel principal
+        dpFrameContainer.removeAll();
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     private String obtenerStringPsw(char[] psw){
         String password = "";
@@ -514,14 +576,22 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelTitle;
     private javax.swing.JPasswordField jPasswordField;
+    private javax.swing.JLabel lblCrearNuevaTarea;
     private javax.swing.JLabel lblExitApplication;
     private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JPanel pnlOpenInternal1;
+    private javax.swing.JLabel lblVerMisTareas;
+    private javax.swing.JPanel pnlAbrirNuevaTarea;
+    private javax.swing.JPanel pnlVerTareas;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+

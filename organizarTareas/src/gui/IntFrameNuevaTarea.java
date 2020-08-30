@@ -6,18 +6,18 @@ import logica.*;
  *
  * @author joaquin
  */
-public class EjemploInternal1 extends javax.swing.JInternalFrame {
+public class IntFrameNuevaTarea extends javax.swing.JInternalFrame {
 
-    private static EjemploInternal1 instance;
+    private static IntFrameNuevaTarea instance;
     
     
-    public EjemploInternal1() {
+    public IntFrameNuevaTarea() {
         initComponents();
     }
     
-    public static EjemploInternal1 getInstance() {
+    public static IntFrameNuevaTarea getInstance() {
         if (instance == null)
-            instance = new EjemploInternal1();
+            instance = new IntFrameNuevaTarea();
         return instance;
     }
 
