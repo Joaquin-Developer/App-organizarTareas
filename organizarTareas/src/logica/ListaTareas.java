@@ -63,10 +63,19 @@ public class ListaTareas {
         return tarea;
     }
     
-    public ListaTareas filtrarPorPrioridad () {
+    public ListaTareas filtrarPorPrioridad (Tarea.prioridad tipoPrioridad) {
         ListaTareas lista = new ListaTareas();
         for (Tarea tarea : listaTareas) {
-            if (tarea.getPrioridad().equals("AL"))
+            if (tarea.getPrioridad().name().equals(tipoPrioridad.name()))
+                lista.add(tarea);
+        }
+        return lista;
+    }
+    
+    public ListaTareas filtrarPorFechaInicio (Fecha fechaInicio) {
+        ListaTareas lista = new ListaTareas();
+        for (Tarea tarea : listaTareas) {
+            if (tarea.getFechaInicio().equals(fechaInicio))
                 lista.add(tarea);
         }
         return lista;
