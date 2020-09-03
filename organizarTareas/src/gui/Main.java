@@ -421,12 +421,12 @@ public class Main extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, usuarioSesion.toString());
                     
                 } else {
-                    JOptionPane.showMessageDialog(null, "Error al iniciar sesion.", "Login Fallido", JOptionPane.ERROR_MESSAGE);
+                    throw new Exception("No se pudo iniciar sesión.");
                 }
             }
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Se produjo un error al intentar iniciar sesión","Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error al intentar login.", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
