@@ -50,16 +50,14 @@ public class ControladorLogica {
         try {
             ConnectionDB cdb = ConnectionDB.getInstance();  
             listaUsuarios = cdb.obtenerUsuarios();
-            
             Usuario usr = listaUsuarios.obtenerPorNombre(nombreUsuario);
             
-            if (usr.getNombreUsuario() == null) {
+            if (usr.getNombreUsuario() == null)
                 loginCorrecto = false;
-            } else if (! usr.getPassword().equals(passw)) {
+            else if (! usr.getPassword().equals(passw))
                 loginCorrecto = false;
-            } else {
+            else
                 loginCorrecto = true;
-            }
             
         } catch(Exception ex) {
             loginCorrecto = false;
@@ -72,18 +70,19 @@ public class ControladorLogica {
     }
     
     public ListaTareas obtenerTareasPorUsuario (Usuario usuario) {
+        ListaTareas listaTareas = new ListaTareas();
         try {
             ConnectionDB cdb = ConnectionDB.getInstance();
-            ListaTareas listaTareas = cdb.obtenerTareasPorUsuario(usuario.getNombreUsuario());
-            //if (listaTareas.)
-            
-            
+            listaTareas = cdb.obtenerTareasPorUsuario(usuario.getNombreUsuario());
+            if (listaTareas.isEmpty()) {
+                throw new Exception("Error: La lista de tareas no contiene elementos");
+            }
         } catch(Exception e) {
-            
+            System.err.println("Error: " + e.getMessage());
         } finally {
-            return new ListaTareas();    
+            return listaTareas;    
         }
-        
     }
+    
     
 }
