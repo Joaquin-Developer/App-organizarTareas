@@ -32,7 +32,11 @@ public class Test {
     
     public static void main(String[] args) {
         // prueba1(); -- no static!
+        //pruebaObjetoTarea();
         
+    }
+    
+    private static void pruebaObjetoTarea() {
         Tarea unaTarea = new Tarea();
         unaTarea.setId(1);
         unaTarea.setNombre("Hacer practico de ADA");
@@ -43,8 +47,8 @@ public class Test {
         unaTarea.setPrioridad(unaTarea.getPrioridad().Alta);
         
         JOptionPane.showMessageDialog(null, unaTarea.toString(), "Información de la tarea creada", JOptionPane.PLAIN_MESSAGE);
-        
     }
+    
     
     
 }

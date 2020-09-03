@@ -3,7 +3,6 @@ package logica;
 import java.sql.Time;
 
 /**
- *
  * @author joaquin
  */
 public class Tarea {
