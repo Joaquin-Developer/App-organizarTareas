@@ -11,9 +11,7 @@ public class ControladorLogica {
     private static ControladorLogica instance;
     private ListaUsuarios listaUsuarios;
     
-    private ControladorLogica() {
-        // add arrayLists...
-    }
+    private ControladorLogica() { /* empty const. */ }
     
     public static ControladorLogica getInstance() {
         if(instance == null)
@@ -22,9 +20,17 @@ public class ControladorLogica {
     }
     
     public ListaUsuarios obtenerListaUsuarios() {
-        
-        return listaUsuarios;
-        
+        ListaUsuarios lista = new ListaUsuarios();
+        try {
+            ConnectionDB cdb = ConnectionDB.getInstance();
+            lista = cdb.obtenerUsuarios();
+            if (lista.isEmpty())
+                throw new Exception("Error: La lista de usuarios no contiene elementos");
+        } catch(Exception e) {
+            System.err.println(e.getMessage());
+        } finally {
+            return lista;
+        }
         /**
         ListaUsuarios lista = new ListaUsuarios();
         try {
@@ -42,7 +48,7 @@ public class ControladorLogica {
          */
         boolean loginCorrecto = false;
         try {
-            ConnectionDB cdb = ConnectionDB.getInstance();    
+            ConnectionDB cdb = ConnectionDB.getInstance();  
             listaUsuarios = cdb.obtenerUsuarios();
             
             Usuario usr = listaUsuarios.obtenerPorNombre(nombreUsuario);
@@ -67,7 +73,7 @@ public class ControladorLogica {
     
     public ListaTareas obtenerTareasPorUsuario (Usuario usuario) {
         try {
-            
+            ConnectionDB cdb = ConnectionDB.getInstance();
             
             
         } catch(Exception e) {

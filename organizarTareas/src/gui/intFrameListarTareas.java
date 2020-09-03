@@ -16,15 +16,13 @@ public class intFrameListarTareas extends javax.swing.JInternalFrame {
     
     
     public intFrameListarTareas() {
-        initComponents();
+        initComponents();   // Inicialización del Frame
         /**
          * Obtenemos el objeto estatico UsuarioSesion desde el main JFrame
-         * cargamos el arraylist de listas de tareas del usuario, a partir 
-         * de un objeto de ControladorLogica
+         * Tambien inicializamos los objetos usuarioSesion y logica
          */
         usuarioSesion = Main.getUsuarioSesion();
         logica = ControladorLogica.getInstance();
-        //listaTareas = logica.
         cargarMisTareas();  // al iniciar el Frame se cargará la lista de tareas.
     }
     
@@ -37,9 +35,10 @@ public class intFrameListarTareas extends javax.swing.JInternalFrame {
     public void cargarMisTareas() {
         try {
             /**
-             * se debe pedir a la Logica que consulte a la persistencia
-             * todas las tareas del Usuario usuarioSesion;
+             * Cargamos el arraylist de listas de tareas del usuario, a partir 
+             * de un objeto de ControladorLogica
              */
+            listaTareas = logica.obtenerTareasPorUsuario(usuarioSesion);
             
             
             
