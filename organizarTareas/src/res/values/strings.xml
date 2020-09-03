@@ -1,6 +1,7 @@
 <resources>
     <!-- cadenas extensas a utilizar en la GUI -->
 
-    <string name="*"></string>
+    <string name="ErrorLogin">No se pudo iniciar sesión.</string>
+    <string name="FaltanDatos">Debe ingresar todos los datos solicitados.</string>
     
 </resources>
