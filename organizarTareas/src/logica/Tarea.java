@@ -15,7 +15,11 @@ public class Tarea {
     //private Time fechaInicio;
     //private Time fechaFin;
     private Fecha fechaFin;
+    private prioridad prioridad;
     
+    public enum prioridad {
+        Alta, Baja, Normal  
+    };
     
     public Tarea(){
     }
@@ -68,12 +72,21 @@ public class Tarea {
         this.id = id;
     }
     
+    public prioridad getPrioridad() {
+        return prioridad;
+    }
+    
+    public void setPrioridad(prioridad p) {
+        this.prioridad = p;
+    }
+    
     @Override
     public String toString () {
-        return "Tarea: " + nombre 
-                + " Fecha inicio: " + fechaInicio.toString()
-                + " Fecha fin: " + fechaFin.toString() 
-                + " Breve descripcion: " + descripcion;
+        return "Tarea: " + nombre + "\n"
+                + "Fecha inicio: " + fechaInicio.toString() + "\n"
+                + "Fecha fin: " + fechaFin.toString() + "\n"
+                + "Breve descripcion: " + descripcion + "\n"
+                + "Esta tarea tiene una prioridad " + prioridad.name();
     }
     
 }
