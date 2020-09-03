@@ -1,0 +1,6 @@
+<resources>
+    <!-- cadenas extensas a utilizar en la GUI -->
+
+    <string name="*"></string>
+    
+</resources>
