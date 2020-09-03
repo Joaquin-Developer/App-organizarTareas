@@ -74,6 +74,8 @@ public class ControladorLogica {
     public ListaTareas obtenerTareasPorUsuario (Usuario usuario) {
         try {
             ConnectionDB cdb = ConnectionDB.getInstance();
+            ListaTareas listaTareas = cdb.obtenerTareasPorUsuario(usuario.getNombreUsuario());
+            //if (listaTareas.)
             
             
         } catch(Exception e) {

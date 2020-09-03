@@ -11,9 +11,7 @@ public class ListaUsuarios {
     
     private ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
     
-    public ListaUsuarios() {
-        
-    }
+    public ListaUsuarios() { /* empty const. */ }
 
     /* ArrayList methods */
     
