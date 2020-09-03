@@ -52,6 +52,24 @@ public class ListaTareas {
     
     /* Specific ArrayList methods */
     
+    public Tarea obtenerPorNombre (String nombre) {
+        Tarea tarea = new Tarea();
+        for (Tarea t : listaTareas) {
+            if (t.getNombre().equals(nombre)) {
+                tarea = t;
+                break;
+            }
+        }
+        return tarea;
+    }
     
+    public ListaTareas filtrarPorPrioridad () {
+        ListaTareas lista = new ListaTareas();
+        for (Tarea tarea : listaTareas) {
+            if (tarea.getPrioridad().equals("AL"))
+                lista.add(tarea);
+        }
+        return lista;
+    }
     
 }
