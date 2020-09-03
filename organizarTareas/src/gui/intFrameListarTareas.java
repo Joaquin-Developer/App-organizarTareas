@@ -33,13 +33,12 @@ public class intFrameListarTareas extends javax.swing.JInternalFrame {
     }
     
     public void cargarMisTareas() {
+        /**
+         * Cargamos el arraylist de listas de tareas del usuario, a partir 
+         * de un objeto de ControladorLogica
+         */
         try {
-            /**
-             * Cargamos el arraylist de listas de tareas del usuario, a partir 
-             * de un objeto de ControladorLogica
-             */
             listaTareas = logica.obtenerTareasPorUsuario(usuarioSesion);
-            
             
             
         } catch(Exception e) {
