@@ -1,5 +1,6 @@
 package gui;
 
+import javax.swing.JOptionPane;
 import logica.*;
 
 /**
@@ -9,16 +10,44 @@ import logica.*;
 public class intFrameListarTareas extends javax.swing.JInternalFrame {
 
     private static intFrameListarTareas instance;
+    private static Usuario usuarioSesion;
+    private ListaTareas listaTareas = new ListaTareas();
+    private ControladorLogica logica;
     
     
     public intFrameListarTareas() {
         initComponents();
+        /**
+         * Obtenemos el objeto estatico UsuarioSesion desde el main JFrame
+         * cargamos el arraylist de listas de tareas del usuario, a partir 
+         * de un objeto de ControladorLogica
+         */
+        usuarioSesion = Main.getUsuarioSesion();
+        logica = ControladorLogica.getInstance();
+        //listaTareas = logica.
+        cargarMisTareas();  // al iniciar el Frame se cargará la lista de tareas.
     }
     
     public static intFrameListarTareas getInstance() {
         if (instance == null)
             instance = new intFrameListarTareas();
         return instance;
+    }
+    
+    public void cargarMisTareas() {
+        try {
+            /**
+             * se debe pedir a la Logica que consulte a la persistencia
+             * todas las tareas del Usuario usuarioSesion;
+             */
+            
+            
+            
+        } catch(Exception e) {
+            System.err.println("Error: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "No se pudo cargar los datos de las tareas", 
+                    "Se produjo un error.", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @SuppressWarnings("unchecked")

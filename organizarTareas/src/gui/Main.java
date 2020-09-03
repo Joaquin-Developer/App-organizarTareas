@@ -3,7 +3,7 @@ package gui;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.Arrays;
+//import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 //import javax.swing.ImageIcon;
@@ -51,6 +51,10 @@ public class Main extends javax.swing.JFrame {
     
     public void setUsuarioSesion(Usuario u){
         usuarioSesion = u;
+    }
+    
+    public static Usuario getUsuarioSesion() {
+        return usuarioSesion;
     }
     
     private JDesktopPane inicializarDesktopPane(JDesktopPane jDesktopPane, String imgPath, int scalx, int scaly) { 
@@ -520,14 +524,13 @@ public class Main extends javax.swing.JFrame {
 
     private String obtenerStringPsw(char[] psw){
         String password = "";
-        for (char p : psw) {
+        for (char p : psw)
             password += p;
-        }
         return password;        
     }
 
     /**
-     * @param argumentos...
+     * @param args
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -591,7 +594,4 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
-
-
-
 

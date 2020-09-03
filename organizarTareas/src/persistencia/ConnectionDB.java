@@ -81,5 +81,11 @@ public class ConnectionDB {
         return usuario;
     }
     
+    public ListaTareas obtenerTareasPorUsuario(String nombreUsuario) {
+        // seguir ...
+        return new ListaTareas();
+        
+    }
+    
 }
 

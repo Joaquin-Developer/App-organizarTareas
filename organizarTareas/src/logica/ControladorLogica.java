@@ -1,6 +1,5 @@
 package logica;
 import persistencia.*;
-//import logica.*;
 
 /**
  * @author joaquin
@@ -62,6 +61,19 @@ public class ControladorLogica {
             System.err.println("Error: " + ex.getMessage());
         } finally {
             return loginCorrecto;
+        }
+        
+    }
+    
+    public ListaTareas obtenerTareasPorUsuario (Usuario usuario) {
+        try {
+            
+            
+            
+        } catch(Exception e) {
+            
+        } finally {
+            return new ListaTareas();    
         }
         
     }
