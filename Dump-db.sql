@@ -16,6 +16,59 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `Tareas`
+--
+
+DROP TABLE IF EXISTS `Tareas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Tareas` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(80) NOT NULL,
+  `descripcion` varchar(200) NOT NULL DEFAULT 'Sin descripcion',
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `prioridad` enum('Alta','Baja','Normal') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Tareas`
+--
+
+LOCK TABLES `Tareas` WRITE;
+/*!40000 ALTER TABLE `Tareas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Tareas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Usuario_Tareas`
+--
+
+DROP TABLE IF EXISTS `Usuario_Tareas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Usuario_Tareas` (
+  `nombreUsuario` varchar(255) NOT NULL,
+  `idTarea` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`nombreUsuario`,`idTarea`),
+  KEY `idTarea` (`idTarea`),
+  CONSTRAINT `Usuario_Tareas_ibfk_1` FOREIGN KEY (`nombreUsuario`) REFERENCES `usuarios` (`nombre`),
+  CONSTRAINT `Usuario_Tareas_ibfk_2` FOREIGN KEY (`idTarea`) REFERENCES `Tareas` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Usuario_Tareas`
+--
+
+LOCK TABLES `Usuario_Tareas` WRITE;
+/*!40000 ALTER TABLE `Usuario_Tareas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Usuario_Tareas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `datosUruguay`
 --
 
@@ -53,6 +106,9 @@ DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `nombre` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `tareasSuperpuestas` bit(1) DEFAULT NULL,
+  `nombrePersona` varchar(255) NOT NULL,
+  `apellidoPersona` varchar(255) NOT NULL,
   PRIMARY KEY (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -63,7 +119,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('jparrilla','joaquin10'),('pedroalfonso12','alfonsoxd777');
+INSERT INTO `usuarios` VALUES ('jparrilla','joaquin10','','Joaquín','Parrilla'),('pedroalfonso12','alfonsoxd777',NULL,'','');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -76,4 +132,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-21 20:28:30
+-- Dump completed on 2020-09-03 21:52:27
