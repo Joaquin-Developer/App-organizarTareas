@@ -6,7 +6,8 @@
             <file>file:/home/joaquin/Documentos/NetBeansProjects/App-organizarTareas/organizarTareas/src/persistencia/ConnectionDB.java</file>
             <file>file:/home/joaquin/Documentos/NetBeansProjects/App-organizarTareas/organizarTareas/src/gui/Main.java</file>
             <file>file:/home/joaquin/Documentos/NetBeansProjects/App-organizarTareas/organizarTareas/src/logica/ControladorLogica.java</file>
-            <file>file:/home/joaquin/Documentos/NetBeansProjects/App-organizarTareas/organizarTareas/src/logica/Usuario.java</file>
+            <file>file:/home/joaquin/Documentos/NetBeansProjects/App-organizarTareas/organizarTareas/src/logica/ListaTareas.java</file>
+            <file>file:/home/joaquin/Documentos/NetBeansProjects/App-organizarTareas/organizarTareas/src/logica/ListaUsuarios.java</file>
         </group>
     </open-files>
 </project-private>
