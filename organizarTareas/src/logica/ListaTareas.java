@@ -63,6 +63,17 @@ public class ListaTareas {
         return tarea;
     }
     
+    public Tarea obtenerPorId (int idTarea) {
+        Tarea tarea = new Tarea();
+        for (Tarea t : listaTareas) {
+            if (t.getId() == idTarea) {
+                tarea = t;
+                break;
+            }
+        }
+        return tarea;
+    }
+    
     public ListaTareas filtrarPorPrioridad (Tarea.prioridad tipoPrioridad) {
         ListaTareas lista = new ListaTareas();
         for (Tarea tarea : listaTareas) {

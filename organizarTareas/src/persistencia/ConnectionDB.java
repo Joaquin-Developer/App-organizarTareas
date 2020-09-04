@@ -3,7 +3,6 @@ import java.sql.*;
 import logica.*;
 
 /**
- *
  * @author joaquin
  *
 **/
@@ -81,11 +80,52 @@ public class ConnectionDB {
         return usuario;
     }
     
-    public ListaTareas obtenerTareasPorUsuario(String nombreUsuario) {
-        // seguir ...
-        return new ListaTareas();
+    public ListaTareas obtenerTodasTareas() throws Exception {
+        ListaTareas listaTareas = new ListaTareas();
+        Connection con = getConnection();
+        Statement st = con.createStatement();
+        ResultSet result = st.executeQuery("SELECT * FROM Tareas");
         
+        while (result.next()) {
+            Tarea elemento = new Tarea();
+            elemento.setId(result.getInt("id"));
+            elemento.setNombre(result.getString("nombre"));
+            elemento.setDescripcion(result.getString("descripcion"));
+            
+            Date fechaInicio = result.getDate("fechaInicio");
+            Fecha objFechaInicio = new Fecha(fechaInicio.getDay(), fechaInicio.getMonth(), fechaInicio.getYear());
+            elemento.setFechaInicio(objFechaInicio);
+            
+            Date fechaFin = result.getDate("fechaFin");
+            Fecha objFechaFin = new Fecha(fechaFin.getDay(), fechaFin.getMonth(), fechaFin.getYear());
+            elemento.setFechaFin(objFechaFin);
+            
+            Tarea.prioridad prioridad = (Tarea.prioridad) result.getObject("prioridad");
+            elemento.setPrioridad(prioridad);
+            listaTareas.add(elemento);
+        }
+        con.close();
+        return listaTareas;
     }
+    
+    public ListaTareas obtenerTareasPorUsuario(String nombreUsuario) throws Exception {
+        /**
+         * tabla relacion Usuario_Tareas (retorna todas las tareas asociadas a un usuario específico)
+         */
+        ListaTareas tareasDeUsuario = new ListaTareas();
+        ListaTareas todasTareas = obtenerTodasTareas(); // obtenemos todas las tareas con la query de la funcion de arriba
+        Connection con = getConnection();
+        Statement st = con.createStatement();
+        ResultSet result = st.executeQuery("SELECT idTarea FROM Usuario_Tareas where nombreUsuario=" + nombreUsuario);
+        
+        while (result.next()) {
+            int idTarea = result.getInt("idTarea");
+            tareasDeUsuario.add(todasTareas.obtenerPorId(idTarea));
+        }
+        con.close();
+        return tareasDeUsuario;
+    }
+    
     
 }
 
