@@ -57,7 +57,9 @@ public class ListaTareas {
         for (Tarea tarea : listaTareas) {
             System.out.println("TAREA " + cont);
             System.out.println(tarea.toString());
-            System.out.println("********************************");
+            if (listaTareas.size() != cont)     
+                System.out.println("********************************");
+            // solo imprimire los **** si el objeto actual es el último de la lista
             cont++;
         }
     }
