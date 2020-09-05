@@ -39,6 +39,8 @@ public class ConnectionDB {
     
     /* Specific methods... */
     
+    // *********** SELECT STATEMENTS *******************************************************************
+    
     public ListaUsuarios obtenerUsuarios() throws Exception {
         /* return all users in DB */
         
@@ -132,6 +134,52 @@ public class ConnectionDB {
         return tareasDeUsuario;
     }
     
+    // *********** END SELECT STATEMENTS ***************************************************************
     
-}
+    // *********** INSERT STATEMENTS *******************************************************************
+    
+    public void ingresarUsuario (Usuario nuevoUsuario) {
+        
+    }
+    
+    public void ingresarTarea (Tarea nuevaTarea) {
+        
+    }
+    
+    public void relacionarTareaUsuario (Tarea tarea, Usuario usuario) {
+        
+    }
+    
+    // *********** END INSERT STATEMENTS ***************************************************************
+    
+    // *********** UPDATE/DELETE STATEMENTS ************************************************************
+    
+    public void actualizarTarea(Tarea tarea) {
+        
+    }
+    
+    public void actualizarUsuario(Usuario usuario) {
+        
+    }
+    
+    public void actualizarTareasDeUsuario(Usuario usuario, Tarea tareaBorrar) {
+        
+    }
+    
+    /* delete statement: */
+    public void bajaTarea (Tarea tareaBaja) {
+        
+    }
+    
+    /**
+     * @param usuarioBaja: usuario al que se seteará estado 
+     * @@code Baja logica
+     */
+    public void bajaUsuario (Usuario usuarioBaja) {
+        
+    }
+    
+    // *********** END UPDATE/DELETE STATEMENTS ********************************************************
+    
+} // end class
 
