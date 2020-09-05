@@ -14,11 +14,11 @@ public class Tarea {
     //private Time fechaInicio;
     //private Time fechaFin;
     private Fecha fechaFin;
-    private prioridad prioridad;
+    private Prioridad prioridad;
     
-    public enum prioridad {
+    public enum Prioridad {
         Alta, Baja, Normal  
-    };
+    }
     
     public Tarea(){
     }
@@ -71,12 +71,23 @@ public class Tarea {
         this.id = id;
     }
     
-    public prioridad getPrioridad() {
-        return prioridad;
+    public String getPrioridad() {
+        return prioridad.name();
     }
     
-    public void setPrioridad(prioridad p) {
-        this.prioridad = p;
+    public void setPrioridad(String prioridad) {
+        switch (prioridad) {
+            case "Alta" :
+                this.prioridad = Prioridad.Alta;
+                break;
+            case "Baja" :
+                this.prioridad = Prioridad.Baja;
+            case "Normal" :
+                this.prioridad = Prioridad.Normal;
+                break;
+            default :
+                this.prioridad = null;
+        }
     }
     
     @Override

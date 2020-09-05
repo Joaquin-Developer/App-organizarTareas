@@ -53,8 +53,12 @@ public class ListaTareas {
     /* Specific ArrayList methods */
     
     public void recorrerLista() {
+        int cont = 1;
         for (Tarea tarea : listaTareas) {
+            System.out.println("TAREA " + cont);
             System.out.println(tarea.toString());
+            System.out.println("********************************");
+            cont++;
         }
     }
     
@@ -80,10 +84,10 @@ public class ListaTareas {
         return tarea;
     }
     
-    public ListaTareas filtrarPorPrioridad (Tarea.prioridad tipoPrioridad) {
+    public ListaTareas filtrarPorPrioridad (String tipoPrioridad) {
         ListaTareas lista = new ListaTareas();
         for (Tarea tarea : listaTareas) {
-            if (tarea.getPrioridad().name().equals(tipoPrioridad.name()))
+            if (tarea.getPrioridad().equals(tipoPrioridad))
                 lista.add(tarea);
         }
         return lista;

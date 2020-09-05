@@ -35,7 +35,8 @@ public class Test {
         unaTarea.setFechaInicio(new Fecha(3, 9, 2020));
         unaTarea.setFechaFin(new Fecha(4, 9, 2020));
         
-        unaTarea.setPrioridad(unaTarea.getPrioridad().Alta);
+        
+        unaTarea.setPrioridad(Tarea.Prioridad.Alta.name());
         
         JOptionPane.showMessageDialog(null, unaTarea.toString(), "Información de la tarea creada", JOptionPane.PLAIN_MESSAGE);
     }

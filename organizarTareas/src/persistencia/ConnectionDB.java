@@ -73,8 +73,14 @@ public class ConnectionDB {
          * No seguro: se debe arreglar para impedir inyecciones SQL
          */
         while (result.next()) {
-            usuario.setNombreUsuario(result.getString("nombre"));
+            usuario.setNombreUsuario(result.getString("nombre")); 
             usuario.setPassword(result.getString("password"));
+            if (result.getInt("tareasSuperpuestas") == 0)
+                usuario.setTareasSuperpuestas(false);
+            else 
+                usuario.setTareasSuperpuestas(true);
+            usuario.setNombrePersona(result.getString("nombrePersona"));
+            usuario.setApellidoPersona(result.getString("apellidoPersona"));
         }
         con.close();
         return usuario;
@@ -100,8 +106,8 @@ public class ConnectionDB {
             Fecha objFechaFin = new Fecha(fechaFin.getDay(), fechaFin.getMonth(), fechaFin.getYear());
             elemento.setFechaFin(objFechaFin);
             
-            Tarea.prioridad prioridad = (Tarea.prioridad) result.getObject("prioridad");
-            elemento.setPrioridad(prioridad);
+            //Tarea.Prioridad prioridad = (Tarea.Prioridad) result.getObject("prioridad");
+            elemento.setPrioridad(result.getString("prioridad"));
             listaTareas.add(elemento);
         }
         con.close();
@@ -116,7 +122,7 @@ public class ConnectionDB {
         ListaTareas todasTareas = obtenerTodasTareas(); // obtenemos todas las tareas con la query de la funcion de arriba
         Connection con = getConnection();
         Statement st = con.createStatement();
-        ResultSet result = st.executeQuery("SELECT idTarea FROM Usuario_Tareas where nombreUsuario=" + nombreUsuario);
+        ResultSet result = st.executeQuery("SELECT idTarea FROM Usuario_Tareas where nombreUsuario='" + nombreUsuario + "'");
         
         while (result.next()) {
             int idTarea = result.getInt("idTarea");
