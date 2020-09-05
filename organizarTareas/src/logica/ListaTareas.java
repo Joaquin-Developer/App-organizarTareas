@@ -52,6 +52,12 @@ public class ListaTareas {
     
     /* Specific ArrayList methods */
     
+    public void recorrerLista() {
+        for (Tarea tarea : listaTareas) {
+            System.out.println(tarea.toString());
+        }
+    }
+    
     public Tarea obtenerPorNombre (String nombre) {
         Tarea tarea = new Tarea();
         for (Tarea t : listaTareas) {

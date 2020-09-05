@@ -8,6 +8,7 @@ package test;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import logica.*;
+import java.util.ArrayList;
 
 public class Test {
     
@@ -25,12 +26,7 @@ public class Test {
         JOptionPane.showMessageDialog(null, fecha.toString(), "LocalDate", JOptionPane.PLAIN_MESSAGE);
         
     }
-    
-    public static void main(String[] args) {
-        // prueba1(); -- no static!
-        //pruebaObjetoTarea();
-    }
-    
+
     private static void pruebaObjetoTarea() {
         Tarea unaTarea = new Tarea();
         unaTarea.setId(1);
@@ -44,4 +40,29 @@ public class Test {
         JOptionPane.showMessageDialog(null, unaTarea.toString(), "Información de la tarea creada", JOptionPane.PLAIN_MESSAGE);
     }
     
+    private static void Test_Consultas() {
+        try {
+            // obtener todas las tareas del usuario "jparrilla" :
+            ControladorLogica logica = ControladorLogica.getInstance();
+        
+            Usuario usuario = logica.obtenerListaUsuarios().obtenerPorNombre("jparrilla");
+            // creo un objeto ListaTareas con el atributo arrayList (lista de Obj.Tareas)
+            ListaTareas misTareas = logica.obtenerTareasPorUsuario(usuario);    
+            
+            // el metodo recorrerLista recorre cada TAREA de la lista y llama a su metodo toString()
+            misTareas.recorrerLista();  
+            
+        } catch (Exception e) {
+            System.err.println("El problema: " + e.getMessage());
+        }
+        
+    }
+            
+    public static void main(String[] args) {
+        // prueba1(); -- no static!
+        //pruebaObjetoTarea();
+        Test_Consultas();
+    }    
+    
 }
+
