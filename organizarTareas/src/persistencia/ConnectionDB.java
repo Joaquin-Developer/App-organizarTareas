@@ -138,8 +138,23 @@ public class ConnectionDB {
     
     // *********** INSERT STATEMENTS *******************************************************************
     
-    public void ingresarUsuario (Usuario nuevoUsuario) {
-        
+    public void ingresarUsuario (Usuario nuevoUsuario) throws Exception {
+        Connection conexion = getConnection();
+        conexion.setAutoCommit(false);
+        String query = "insert into usuarios (nombre, password, tareasSuperpuestas, " +
+                "nombrePersona, apellidoPersona) values(?,?,?,?,?)";
+        PreparedStatement st = conexion.prepareStatement(query);
+        st.setString(1, nuevoUsuario.getNombreUsuario());
+        st.setString(2, nuevoUsuario.getPassword());
+        if (nuevoUsuario.getTareasSuperpuestas())
+            st.setInt(3, 1);
+        else    
+            st.setInt(3, 0);
+        st.setString(4, nuevoUsuario.getNombrePersona());
+        st.setString(5, nuevoUsuario.getApellidoPersona());        
+        st.executeUpdate();
+        conexion.commit();
+        conexion.close();
     }
     
     public void ingresarTarea (Tarea nuevaTarea) {
