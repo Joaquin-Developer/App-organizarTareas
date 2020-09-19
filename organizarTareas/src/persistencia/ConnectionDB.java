@@ -220,8 +220,25 @@ public class ConnectionDB {
         conexion.close();
     }
     
-    public void actualizarUsuario(Usuario usuario) {
+    public void actualizarUsuario(Usuario usuario) throws Exception {
         
+        Connection conexion = getConnection();
+        conexion.setAutoCommit(false);
+        
+        int superpuestas = 0;
+        if (usuario.getTareasSuperpuestas())
+            superpuestas = 1;
+        
+        String query = "UPDATE usuarios SET password='" + usuario.getPassword() + "', " +
+                "tareasSuperpuestas=" + superpuestas + ", nombrePersona='" + usuario.getNombrePersona() + "', " +
+                "apellidoPersona='" + usuario.getApellidoPersona() + "' " +
+                "where nombre=?";
+        
+        PreparedStatement st = conexion.prepareStatement(query);
+        st.setString(1, usuario.getNombreUsuario());
+        st.executeUpdate();
+        conexion.commit();
+        conexion.close();
     }
     
     public void actualizarTareasDeUsuario(Usuario usuario, Tarea tareaBorrar) {
