@@ -192,6 +192,8 @@ public class ConnectionDB {
         PreparedStatement st = conexion.prepareStatement(query);
         st.setString(1, usuario.getNombreUsuario());
         st.setInt(2, tarea.getId());
+        //int retorno = st.executeUpdate();
+        //System.out.println(retorno);
         st.executeUpdate();
         conexion.commit();
         conexion.close();
