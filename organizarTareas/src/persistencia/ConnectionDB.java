@@ -241,13 +241,36 @@ public class ConnectionDB {
         conexion.close();
     }
     
-    public void actualizarTareasDeUsuario(Usuario usuario, Tarea tareaBorrar) {
+    public void actualizarTareasDeUsuario(Usuario usuario, Tarea tarea) throws Exception {
         
+        Connection conexion = getConnection();
+        conexion.setAutoCommit(false);
+        
+        String query = "UPDATE Usuario_Tareas SET nombreUsuario='" + usuario.getNombreUsuario() + "', " +
+                "idTarea=" + tarea.getId() +
+                "where nombreUsuario=?";
+        
+        PreparedStatement st = conexion.prepareStatement(query);
+        st.setString(1, usuario.getNombreUsuario());
+        st.executeUpdate();
+        conexion.commit();
+        conexion.close();
     }
     
     /* delete statement: */
-    public void bajaTarea (Tarea tareaBaja) {
+    public void bajaTarea (Tarea tareaBaja) throws Exception {
         
+        Connection conexion = getConnection();
+        conexion.setAutoCommit(false);
+        
+        String query = "UPDATE Tareas SET estado=0 " +
+                "where nombre=?";
+        
+        PreparedStatement st = conexion.prepareStatement(query);
+        st.setString(1, tareaBaja.getNombre());
+        st.executeUpdate();
+        conexion.commit();
+        conexion.close();
     }
     
     /**
