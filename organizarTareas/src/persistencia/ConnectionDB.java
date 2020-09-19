@@ -262,7 +262,6 @@ public class ConnectionDB {
         
         Connection conexion = getConnection();
         conexion.setAutoCommit(false);
-        
         String query = "UPDATE Tareas SET estado=0 " +
                 "where nombre=?";
         
@@ -275,10 +274,19 @@ public class ConnectionDB {
     
     /**
      * @param usuarioBaja: usuario al que se seteará estado 
-     * @@code Baja logica
+     * @code Baja logica
      */
-    public void bajaUsuario (Usuario usuarioBaja) {
+    public void bajaUsuario (Usuario usuarioBaja) throws Exception {
         
+        Connection conexion = getConnection();
+        conexion.setAutoCommit(false);
+        String query = "UPDATE usuarios SET estado=0 " +
+                "where nombre=?";
+        PreparedStatement st = conexion.prepareStatement(query);
+        st.setString(1, usuarioBaja.getNombreUsuario());
+        st.executeUpdate();
+        conexion.commit();
+        conexion.close();
     }
     
     // *********** END UPDATE/DELETE STATEMENTS ********************************************************
