@@ -184,8 +184,17 @@ public class ConnectionDB {
         conexion.close();
     }
     
-    public void relacionarTareaUsuario (Tarea tarea, Usuario usuario) {
+    public void relacionarTareaUsuario (Tarea tarea, Usuario usuario) throws Exception {
         
+        Connection conexion = getConnection();
+        conexion.setAutoCommit(false);
+        String query = "insert into Usuario_Tareas(nombreUsuario, idTarea) values(?,?)";
+        PreparedStatement st = conexion.prepareStatement(query);
+        st.setString(1, usuario.getNombreUsuario());
+        st.setInt(2, tarea.getId());
+        st.executeUpdate();
+        conexion.commit();
+        conexion.close();
     }
     
     // *********** END INSERT STATEMENTS ***************************************************************
