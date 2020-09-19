@@ -198,13 +198,26 @@ public class ConnectionDB {
         conexion.commit();
         conexion.close();
     }
-    
     // *********** END INSERT STATEMENTS ***************************************************************
     
     // *********** UPDATE/DELETE STATEMENTS ************************************************************
     
-    public void actualizarTarea(Tarea tarea) {
+    public void actualizarTarea(Tarea tarea) throws Exception {
         
+        Connection conexion = getConnection();
+        conexion.setAutoCommit(false);
+        
+        String query = "UPDATE Tareas SET nombre='" + tarea.getNombre() + 
+                "', descripcion='" + tarea.getDescripcion() + "', " +
+                "fechaInicio='" + tarea.getFechaInicio().toString() + "', " +
+                "fechaFin='" + tarea.getFechaFin().toString() + "', prioridad='" + tarea.getPrioridad() + "' " +
+                "WHERE id=?";
+        
+        PreparedStatement st = conexion.prepareStatement(query);
+        st.setInt(1, tarea.getId());
+        st.executeUpdate();
+        conexion.commit();
+        conexion.close();
     }
     
     public void actualizarUsuario(Usuario usuario) {
