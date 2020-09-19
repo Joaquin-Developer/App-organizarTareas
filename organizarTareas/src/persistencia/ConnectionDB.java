@@ -2,6 +2,7 @@ package persistencia;
 import java.sql.*;
 import logica.*;
 
+
 /**
  * @author joaquin
  *
@@ -139,10 +140,12 @@ public class ConnectionDB {
     // *********** INSERT STATEMENTS *******************************************************************
     
     public void ingresarUsuario (Usuario nuevoUsuario) throws Exception {
+        
         Connection conexion = getConnection();
         conexion.setAutoCommit(false);
         String query = "insert into usuarios (nombre, password, tareasSuperpuestas, " +
                 "nombrePersona, apellidoPersona) values(?,?,?,?,?)";
+        
         PreparedStatement st = conexion.prepareStatement(query);
         st.setString(1, nuevoUsuario.getNombreUsuario());
         st.setString(2, nuevoUsuario.getPassword());
@@ -157,8 +160,28 @@ public class ConnectionDB {
         conexion.close();
     }
     
-    public void ingresarTarea (Tarea nuevaTarea) {
+    public void ingresarTarea (Tarea nuevaTarea) throws Exception{
+        Connection conexion = getConnection();
+        conexion.setAutoCommit(false);
+        String query = "insert into Tareas (nombre, descripcion, fechaInicio, fechaFin, prioridad) " +
+                "values(?,?,?,?,?)";
         
+        PreparedStatement st = conexion.prepareStatement(query);
+        st.setString(1, nuevaTarea.getNombre());
+        st.setString(2, nuevaTarea.getDescripcion());
+        
+        java.sql.Date fechaInicio = new java.sql.Date(nuevaTarea.getFechaInicio().getAnio(), 
+                nuevaTarea.getFechaInicio().getMes(), nuevaTarea.getFechaInicio().getDia());
+        st.setDate(3, fechaInicio);
+        
+        java.sql.Date fechaFin = new java.sql.Date(nuevaTarea.getFechaFin().getAnio(), 
+                nuevaTarea.getFechaFin().getMes(), nuevaTarea.getFechaFin().getDia());
+        st.setDate(4, fechaFin);        
+        st.setString(5, nuevaTarea.getPrioridad());
+
+        st.executeUpdate();
+        conexion.commit();
+        conexion.close();
     }
     
     public void relacionarTareaUsuario (Tarea tarea, Usuario usuario) {
