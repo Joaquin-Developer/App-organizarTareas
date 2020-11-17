@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="App-organizarTareas">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/organizarTareas/dist/App-organizarTareas.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

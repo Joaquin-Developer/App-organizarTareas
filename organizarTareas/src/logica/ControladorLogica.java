@@ -41,14 +41,33 @@ public class ControladorLogica {
         }
          **/
     }
-    
+
+    public void login(String nombreUsuario, String passw) {
+        ConnectionDB cdb = ConnectionDB.getInstance();
+        Usuario usuario = new Usuario();
+        try {
+            if (nombreUsuario.length() == 0 || passw.length() == 0)
+                throw new Exception("Debe indicar usuario y contraseña.");
+
+            listaUsuarios = cdb.obtenerUsuarios();
+            usuario = listaUsuarios.obtenerPorNombre(nombreUsuario);
+
+            if (usuario.getNombreUsuario() == null || ! usuario.getPassword().equals(passw)) {
+                throw new Exception("Usuario y/o clave incorrecta(s)");
+            }
+
+        } catch(Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    /**
     public boolean login(String nombreUsuario, String passw) {
         /**
          * returns true if login is correct, else, returns f.
-         */
+
         boolean loginCorrecto = false;
         try {
-            ConnectionDB cdb = ConnectionDB.getInstance();  
+            ConnectionDB cdb = ConnectionDB.getInstance();
             listaUsuarios = cdb.obtenerUsuarios();
             Usuario usr = listaUsuarios.obtenerPorNombre(nombreUsuario);
             
@@ -68,6 +87,7 @@ public class ControladorLogica {
         }
         
     }
+    **/
     
     public ListaTareas obtenerTareasPorUsuario (Usuario usuario) {
         ListaTareas listaTareas = new ListaTareas();

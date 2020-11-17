@@ -403,45 +403,31 @@ public class Main extends javax.swing.JFrame {
         */
     }//GEN-LAST:event_jPasswordFieldFocusLost
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         /**
          * Boton LOGIN (JFrame1)
          */
-        
-        try{
-            if (txtUsuario.getText().length() == 0 || jPasswordField.getText().length() == 0) {
-                JOptionPane.showMessageDialog(null,"faltan datos");
-            } else {
-                
-                ControladorLogica logica = ControladorLogica.getInstance();
-                boolean loginExitoso = logica.login(txtUsuario.getText(), obtenerStringPsw(jPasswordField.getPassword()));
-                
-                if (loginExitoso) {
-                    //JOptionPane.showMessageDialog(null, "login exitoso");
-                    setUsuarioSesion(logica.obtenerListaUsuarios().obtenerPorNombre(txtUsuario.getText()));
-                    this.setVisible(false);
-                    AppMainJFrame.setVisible(true);
-                    editMainFrameProperties();
-                    JOptionPane.showMessageDialog(null, usuarioSesion.toString());
-                    
-                } else {
-                    throw new Exception("No se pudo iniciar sesión.");
-                }
-            }
-            
-        }catch(Exception e){
+        try {
+            // procedimiento de login:
+            ControladorLogica.getInstance().login(txtUsuario.getText(), new String(jPasswordField.getPassword()));
+
+            setUsuarioSesion(ControladorLogica.getInstance().obtenerListaUsuarios().obtenerPorNombre(txtUsuario.getText()));
+            this.setVisible(false);
+            AppMainJFrame.setVisible(true);
+            editMainFrameProperties();
+            JOptionPane.showMessageDialog(null, usuarioSesion.toString());
+
+        } catch(Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error al intentar login.", JOptionPane.ERROR_MESSAGE);
         }
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-    
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {
         if (JOptionPane.showConfirmDialog(null, "¿Desea salir del login?", "Confirme salida", JOptionPane.YES_NO_OPTION , JOptionPane.QUESTION_MESSAGE) == 0){
             System.exit(0);
         }
-        
-    }//GEN-LAST:event_btnCloseActionPerformed
+    }
 
     private void btnCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCuentaActionPerformed
         
@@ -517,16 +503,9 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cBoxSettingsUserActionPerformed
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {
         // al hacer click en logo se vacian los elementos del panel principal
         dpFrameContainer.removeAll();
-    }//GEN-LAST:event_jLabel5MouseClicked
-
-    private String obtenerStringPsw(char[] psw){
-        String password = "";
-        for (char p : psw)
-            password += p;
-        return password;        
     }
 
     /**
